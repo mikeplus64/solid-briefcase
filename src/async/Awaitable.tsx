@@ -1,4 +1,5 @@
-import { cloneDeep, isEqual as deepIsEqual } from "lodash";
+import cloneDeep from "lodash/cloneDeep";
+import deepIsEqual from "lodash/isEqual";
 import {
   Accessor,
   batch,

@@ -1,6 +1,5 @@
 import {
   Component,
-  createContext,
   createMemo,
   createSignal,
   JSX,
@@ -18,7 +17,10 @@ export type AsyncProp<Prop, Props> =
   | (Prop extends () => boolean ? IsLoadingProp : never)
   | (Prop extends () => void ? RefreshProp : never);
 
-function Load<Comp extends Component<any>, Props extends Parameters<Comp>[0] = Parameters<Comp>[0]>(
+function Load<
+  Comp extends Component<any>,
+  Props extends Parameters<Comp>[0] = Parameters<Comp>[0]
+>(
   props__: {
     component: Component<Props>;
     fallback?: () => JSX.Element;
@@ -114,7 +116,10 @@ export type PropsAsPromises<Props extends {}> = {
 };
 
 namespace Load {
-  export function memo<P, Ps>(fetch: (props: MaybePropsOf<Ps>) => P | undefined, defaultValue?: P) {
+  export function memo<P, Ps>(
+    fetch: (props: MaybePropsOf<Ps>) => P | undefined,
+    defaultValue?: P
+  ) {
     const haveDefaultValue: boolean = defaultValue !== undefined;
     return new MemoPropFetch(fetch, defaultValue, haveDefaultValue);
   }
